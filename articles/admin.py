@@ -13,13 +13,15 @@ class TagAdmin(admin.ModelAdmin):
 class ScopeInlineFormset(BaseInlineFormSet):
     def clean(self):
         for form in self.forms:
+            if not len(form.cleaned_data['tag']):
+                raise ValidationError('Нет главного тега')
             # В form.cleaned_data будет словарь с данными
             # каждой отдельной формы, которые вы можете проверить
-            form.cleaned_data
+            # form.cleaned_data
             # вызовом исключения ValidationError можно указать админке о наличие ошибки
             # таким образом объект не будет сохранен,
             # а пользователю выведется соответствующее сообщение об ошибке
-            raise ValidationError('Тут всегда ошибка')
+            # raise ValidationError('Тут всегда ошибка')
         return super().clean()  # вызываем базовый код переопределяемого метода
 
 
