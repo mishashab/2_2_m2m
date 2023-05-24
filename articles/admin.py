@@ -13,8 +13,8 @@ class TagAdmin(admin.ModelAdmin):
 class ScopeInlineFormset(BaseInlineFormSet):
     def clean(self):
         for form in self.forms:
-            if not len(form.cleaned_data['tag']):
-                raise ValidationError('Нет главного тега')
+            if not form.cleaned_data['tag']:
+                raise ValidationError('Нет тега')
             # В form.cleaned_data будет словарь с данными
             # каждой отдельной формы, которые вы можете проверить
             # form.cleaned_data
