@@ -23,7 +23,7 @@ class Article(models.Model):
 
 class Tag(models.Model):
 
-    name = models.CharField(max_length=10,
+    name = models.CharField(max_length=50,
                             verbose_name='Раздел'
                             )
     article = models.ManyToManyField(Article,
