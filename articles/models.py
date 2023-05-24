@@ -27,7 +27,7 @@ class Tag(models.Model):
                             verbose_name='Раздел'
                             )
     article = models.ManyToManyField(Article,
-                                     through='TagScope',
+                                     through='Scope',
                                      related_name='tags',
                                      verbose_name='Статьи',
                                      )
