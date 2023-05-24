@@ -26,8 +26,8 @@ class ScopeInlineFormset(BaseInlineFormSet):
                 raise ValidationError('Статье не присвоен основной тег')
 
             if sum(main_tags) > 1:
-                raise ValidationError('В статье главный основной тег '
-                                      'используется более 1 раза')
+                raise ValidationError('В статье основной тег используется '
+                                      'более 1 раза')
 
         return super().clean()  # вызываем базовый код переопределяемого метода
 
