@@ -5,11 +5,6 @@ from django.forms import BaseInlineFormSet
 from .models import Article, Scope, Tag
 
 
-@admin.register(Article)
-class ArticleAdmin(admin.ModelAdmin):
-    pass
-
-
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
     pass
@@ -28,6 +23,11 @@ class ScopeInlineFormset(BaseInlineFormSet):
         return super().clean()  # вызываем базовый код переопределяемого метода
 
 
-class RelationshipInline(admin.TabularInline):
+class ScopeInline(admin.TabularInline):
     model = Scope
     formset = ScopeInlineFormset
+
+
+@admin.register(Article)
+class ArticleAdmin(admin.ModelAdmin):
+    inlines = [ScopeInline]
